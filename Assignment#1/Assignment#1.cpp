@@ -7,7 +7,7 @@ int main()
 {
     bool start = true;
     while (true) {
-
+        //enter code here 
     }
 }
 
