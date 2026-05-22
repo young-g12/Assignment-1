@@ -11,5 +11,7 @@ int main() {
 
     logic game;
 
+    game.introduction();
+
     return 0;
 }

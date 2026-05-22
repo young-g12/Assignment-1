@@ -5,6 +5,7 @@ class logic {
 
 public:
     logic();
+    void introduction();
 
 };
 
