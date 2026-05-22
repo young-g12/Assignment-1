@@ -3,11 +3,13 @@
 
 #include <iostream>
 
+#include "gamelogic.h"
+
 using namespace std;
 
 int main() {
 
-    cout << "starting game" << endl;
+    logic game;
 
     return 0;
 }

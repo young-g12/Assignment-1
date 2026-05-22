@@ -3,6 +3,9 @@
 
 class logic {
 
+public:
+    logic();
+
 };
 
 #endif
