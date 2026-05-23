@@ -7,6 +7,10 @@ logic::logic() {
 
     cout << "Logic object created!" << endl;
 
+    smallCount = 0;
+    mediumCount = 0;
+    largeCount = 0;
+
 }
 
 void logic::introduction() {
