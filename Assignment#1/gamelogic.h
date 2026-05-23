@@ -1,11 +1,23 @@
-#ifndef LOGIC_H
-#define LOGIC_H
+#ifndef GAMELOGIC_H
+#define GAMELOGIC_H
+
+#include <string>
+
+using namespace std;
 
 class logic {
 
 public:
+
     logic();
+
     void introduction();
+
+    bool createLists();
+
+    string scrambler(string word);
+
+    bool playGame();
 
 private:
 
@@ -16,6 +28,8 @@ private:
     int smallCount;
     int mediumCount;
     int largeCount;
+
+    int numCorrect;
 
 };
 

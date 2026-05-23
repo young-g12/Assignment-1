@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "gamelogic.h"
+#include "GAMELOGIC.H"
 
 using namespace std;
 
@@ -13,5 +13,9 @@ int main() {
 
     game.introduction();
 
+    game.createLists();
+
+    game.playGame();
+    
     return 0;
 }
