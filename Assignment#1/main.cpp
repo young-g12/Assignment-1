@@ -1,11 +1,16 @@
 // Assignment#1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+
 
 #include <iostream>
 
 #include "GAMELOGIC.H"
 
+#include <chrono>
+
+#include <ctime>
+
 using namespace std;
+using namespace chrono;
 
 int main() {
 
@@ -13,11 +18,17 @@ int main() {
 
     game.introduction();
 
-    game.createLists();
+    if (!game.createLists()) {
 
-    game.playGame();
+        return 1;
+    }
 
-    game.end();
-    
+    bool completed = game.playGame();
+
+    if (completed) {
+
+        game.end();
+    }
+
     return 0;
 }

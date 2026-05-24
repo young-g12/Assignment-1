@@ -5,6 +5,7 @@
 #include <ctime>
 #include <random>
 #include <cstdlib>
+#include <chrono>
 
 using namespace std;
 
@@ -27,6 +28,9 @@ void logic::introduction() {
     cout << "==========================" << endl;
     cout << " WORD UNSCRAMBLE GAME" << endl;
     cout << "==========================" << endl;
+
+    cout << "You have 60 seconds to finish the game!"
+        << endl;
 
 }
 
@@ -86,6 +90,8 @@ string logic::scrambler(string word) {
 
 bool logic::playGame() {
 
+    auto start = chrono::steady_clock::now();
+
     string answer;
 
     cout << endl;
@@ -93,6 +99,20 @@ bool logic::playGame() {
 
      //small words
     for (int i = 0; i < 2; i++) {
+
+        auto current = chrono::steady_clock::now();
+
+        auto elapsed =
+            chrono::duration_cast<chrono::seconds>(
+                current - start);
+
+        if (elapsed.count() >= 60) {
+
+            cout << endl;
+            cout << "TIME IS UP!" << endl;
+
+            return false;
+        }
 
         int randomIndex = rand() % smallCount;
 
@@ -123,6 +143,20 @@ bool logic::playGame() {
     //medium word
     for (int i = 0; i < 2; i++) {
 
+        auto current = chrono::steady_clock::now();
+
+        auto elapsed =
+            chrono::duration_cast<chrono::seconds>(
+                current - start);
+
+        if (elapsed.count() >= 60) {
+
+            cout << endl;
+            cout << "TIME IS UP!" << endl;
+
+            return false;
+        }
+
         int randomIndex = rand() % mediumCount;
 
         string word = mediumWords[randomIndex];
@@ -150,6 +184,20 @@ bool logic::playGame() {
     }
 
     //large words
+    auto current = chrono::steady_clock::now();
+
+    auto elapsed =
+        chrono::duration_cast<chrono::seconds>(
+            current - start);
+
+    if (elapsed.count() >= 60) {
+
+        cout << endl;
+        cout << "TIME IS UP!" << endl;
+
+        return false;
+    }
+
     int randomIndex = rand() % largeCount;
 
     string word = largeWords[randomIndex];
