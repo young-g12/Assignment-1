@@ -3,8 +3,8 @@
 #include <fstream>
 #include <algorithm>
 #include <ctime>
-#include <random>
 #include <cstdlib>
+#include <random>
 #include <chrono>
 
 using namespace std;
@@ -20,7 +20,6 @@ logic::logic() {
     numCorrect = 0;
 
     srand(time(0));
-
 }
 
 void logic::introduction() {
@@ -28,10 +27,7 @@ void logic::introduction() {
     cout << "==========================" << endl;
     cout << " WORD UNSCRAMBLE GAME" << endl;
     cout << "==========================" << endl;
-
-    cout << "You have 60 seconds to finish the game!"
-        << endl;
-
+    cout << "You have 60 seconds to finish the game!" << endl;
 }
 
 bool logic::createLists() {
@@ -97,7 +93,6 @@ bool logic::playGame() {
     cout << endl;
     cout << "Unscramble the words!" << endl;
 
-     //small words
     for (int i = 0; i < 2; i++) {
 
         auto current = chrono::steady_clock::now();
@@ -113,6 +108,13 @@ bool logic::playGame() {
 
             return false;
         }
+
+        int timeLeft = 60 - elapsed.count();
+
+        cout << "Time Remaining: "
+            << timeLeft
+            << " seconds"
+            << endl;
 
         int randomIndex = rand() % smallCount;
 
@@ -126,6 +128,20 @@ bool logic::playGame() {
 
         cin >> answer;
 
+        current = chrono::steady_clock::now();
+
+        elapsed =
+            chrono::duration_cast<chrono::seconds>(
+                current - start);
+
+        if (elapsed.count() >= 60) {
+
+            cout << endl;
+            cout << "TIME IS UP!" << endl;
+
+            return false;
+        }
+
         if (answer == word) {
 
             cout << "Correct!" << endl;
@@ -140,7 +156,6 @@ bool logic::playGame() {
         }
     }
 
-    //medium word
     for (int i = 0; i < 2; i++) {
 
         auto current = chrono::steady_clock::now();
@@ -157,6 +172,13 @@ bool logic::playGame() {
             return false;
         }
 
+        int timeLeft = 60 - elapsed.count();
+
+        cout << "Time Remaining: "
+            << timeLeft
+            << " seconds"
+            << endl;
+
         int randomIndex = rand() % mediumCount;
 
         string word = mediumWords[randomIndex];
@@ -168,6 +190,20 @@ bool logic::playGame() {
             << scrambled << endl;
 
         cin >> answer;
+
+        current = chrono::steady_clock::now();
+
+        elapsed =
+            chrono::duration_cast<chrono::seconds>(
+                current - start);
+
+        if (elapsed.count() >= 60) {
+
+            cout << endl;
+            cout << "TIME IS UP!" << endl;
+
+            return false;
+        }
 
         if (answer == word) {
 
@@ -183,7 +219,6 @@ bool logic::playGame() {
         }
     }
 
-    //large words
     auto current = chrono::steady_clock::now();
 
     auto elapsed =
@@ -198,6 +233,13 @@ bool logic::playGame() {
         return false;
     }
 
+    int timeLeft = 60 - elapsed.count();
+
+    cout << "Time Remaining: "
+        << timeLeft
+        << " seconds"
+        << endl;
+
     int randomIndex = rand() % largeCount;
 
     string word = largeWords[randomIndex];
@@ -209,6 +251,20 @@ bool logic::playGame() {
         << scrambled << endl;
 
     cin >> answer;
+
+    current = chrono::steady_clock::now();
+
+    elapsed =
+        chrono::duration_cast<chrono::seconds>(
+            current - start);
+
+    if (elapsed.count() >= 60) {
+
+        cout << endl;
+        cout << "TIME IS UP!" << endl;
+
+        return false;
+    }
 
     if (answer == word) {
 
@@ -237,25 +293,21 @@ void logic::end() {
 
     if (numCorrect <= 2) {
 
-        cout << "You have the intelligence of a potato."
-            << endl;
+        cout << "You have the intelligence of a potato." << endl;
     }
 
     else if (numCorrect == 3) {
 
-        cout << "You are pretty smart!"
-            << endl;
+        cout << "You are pretty smart!" << endl;
     }
 
     else if (numCorrect == 4) {
 
-        cout << "Genius level achieved!"
-            << endl;
+        cout << "Genius level achieved!" << endl;
     }
 
     else if (numCorrect == 5) {
 
-        cout << "You are the ultimate word master!"
-            << endl;
+        cout << "You are the ultimate word master!" << endl;
     }
 }

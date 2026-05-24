@@ -2,12 +2,9 @@
 
 
 #include <iostream>
-
-#include "GAMELOGIC.H"
-
 #include <chrono>
 
-#include <ctime>
+#include "gamelogic.h"
 
 using namespace std;
 using namespace chrono;
@@ -23,11 +20,32 @@ int main() {
         return 1;
     }
 
-    bool completed = game.playGame();
+    auto start = steady_clock::now();
+
+    bool completed =
+        game.playGame();
+
+    auto end = steady_clock::now();
+
+    auto elapsed =
+        duration_cast<seconds>(end - start);
+
+    cout << endl;
+    cout << "==========================" << endl;
+
+    cout << "Elapsed Time: "
+        << elapsed.count()
+        << " seconds"
+        << endl;
 
     if (completed) {
 
         game.end();
+    }
+
+    else {
+
+        cout << "Game Over!" << endl;
     }
 
     return 0;

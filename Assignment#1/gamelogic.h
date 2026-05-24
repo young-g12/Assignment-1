@@ -32,7 +32,6 @@ private:
     int largeCount;
 
     int numCorrect;
-
 };
 
 #endif
