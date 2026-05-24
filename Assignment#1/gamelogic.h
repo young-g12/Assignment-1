@@ -19,6 +19,8 @@ public:
 
     bool playGame();
 
+    void end();
+
 private:
 
     string smallWords[50];

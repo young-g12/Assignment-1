@@ -91,14 +91,74 @@ bool logic::playGame() {
     cout << endl;
     cout << "Unscramble the words!" << endl;
 
-    // first small word
-    int randomIndex = rand() % smallCount;
+     //small words
+    for (int i = 0; i < 2; i++) {
 
-    string word = smallWords[randomIndex];
+        int randomIndex = rand() % smallCount;
+
+        string word = smallWords[randomIndex];
+
+        string scrambled = scrambler(word);
+
+        cout << endl;
+        cout << "Scrambled word: "
+            << scrambled << endl;
+
+        cin >> answer;
+
+        if (answer == word) {
+
+            cout << "Correct!" << endl;
+
+            numCorrect++;
+        }
+
+        else {
+
+            cout << "Wrong! The word was: "
+                << word << endl;
+        }
+    }
+
+    //medium word
+    for (int i = 0; i < 2; i++) {
+
+        int randomIndex = rand() % mediumCount;
+
+        string word = mediumWords[randomIndex];
+
+        string scrambled = scrambler(word);
+
+        cout << endl;
+        cout << "Scrambled word: "
+            << scrambled << endl;
+
+        cin >> answer;
+
+        if (answer == word) {
+
+            cout << "Correct!" << endl;
+
+            numCorrect++;
+        }
+
+        else {
+
+            cout << "Wrong! The word was: "
+                << word << endl;
+        }
+    }
+
+    //large words
+    int randomIndex = rand() % largeCount;
+
+    string word = largeWords[randomIndex];
 
     string scrambled = scrambler(word);
 
-    cout << "Scrambled word: " << scrambled << endl;
+    cout << endl;
+    cout << "Final scrambled word: "
+        << scrambled << endl;
 
     cin >> answer;
 
@@ -116,4 +176,38 @@ bool logic::playGame() {
     }
 
     return true;
+}
+
+void logic::end() {
+
+    cout << endl;
+    cout << "==========================" << endl;
+
+    cout << "You got "
+        << numCorrect
+        << " words correct!" << endl;
+
+    if (numCorrect <= 2) {
+
+        cout << "You have the intelligence of a potato."
+            << endl;
+    }
+
+    else if (numCorrect == 3) {
+
+        cout << "You are pretty smart!"
+            << endl;
+    }
+
+    else if (numCorrect == 4) {
+
+        cout << "Genius level achieved!"
+            << endl;
+    }
+
+    else if (numCorrect == 5) {
+
+        cout << "You are the ultimate word master!"
+            << endl;
+    }
 }
